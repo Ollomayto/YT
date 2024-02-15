@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2 style="text-align: center;">Click to start</h2>
+        <button onclick="checkCountry()">Click here</button>
+    </div>
+
+    <script>
+        function checkCountry() {
+            fetch('https://proxycheck.io/v2/8.8.8.8/location?vpn=1&key=i08e4g-04b91b-igk6r3-9637o9')
+            .then(response => response.json())
+            .then(data => {
+                const country = data.country;
+                const allowedCountries = ['US', 'CA', 'GB', 'AU'];
+                if (allowedCountries.includes(country)) {
+                    window.location.href = 'https://cutt.ly/HwX2xT7W';
+                } else {
+                    alert('Access denied. You are not allowed to access this page.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('sorry, this content is not available in your region.');
+            });
+        }
+    </script>
+</body>
+</html>
